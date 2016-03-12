@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/PuerkitoBio/fetchbot"
+	"github.com/jeremiahyan/fetchbot"
 )
 
 func main() {

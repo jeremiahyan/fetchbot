@@ -41,7 +41,7 @@ const (
 	DefaultCrawlDelay = 5 * time.Second
 
 	// DefaultUserAgent is the default user agent string.
-	DefaultUserAgent = "Fetchbot (https://github.com/PuerkitoBio/fetchbot)"
+	DefaultUserAgent = "Fetchbot (https://github.com/jeremiahyan/fetchbot)"
 
 	// DefaultWorkerIdleTTL is the default time-to-live of an idle host worker goroutine.
 	// If no URL is sent for a given host within this duration, this host's goroutine

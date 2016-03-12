@@ -1,9 +1,9 @@
-# fetchbot [![build status](https://secure.travis-ci.org/PuerkitoBio/fetchbot.png)](http://travis-ci.org/PuerkitoBio/fetchbot) [![GoDoc](https://godoc.org/github.com/PuerkitoBio/fetchbot?status.png)](http://godoc.org/github.com/PuerkitoBio/fetchbot)
+# fetchbot [![build status](https://secure.travis-ci.org/PuerkitoBio/fetchbot.png)](http://travis-ci.org/PuerkitoBio/fetchbot) [![GoDoc](https://godoc.org/github.com/jeremiahyan/fetchbot?status.png)](http://godoc.org/github.com/jeremiahyan/fetchbot)
 
 Package fetchbot provides a simple and flexible web crawler that follows the robots.txt
 policies and crawl delays.
 
-It is very much a rewrite of [gocrawl](https://github.com/PuerkitoBio/gocrawl) with a
+It is very much a rewrite of [gocrawl](https://github.com/jeremiahyan/gocrawl) with a
 simpler API, less features built-in, but at the same time more flexibility. As for Go
 itself, sometimes less is more!
 
@@ -11,11 +11,11 @@ itself, sometimes less is more!
 
 To install, simply run in a terminal:
 
-    go get github.com/PuerkitoBio/fetchbot
+    go get github.com/jeremiahyan/fetchbot
 
 The package has a single external dependency, [robotstxt](https://github.com/temoto/robotstxt-go). It also integrates code from the [iq package](https://github.com/kylelemons/iq).
 
-The [API documentation is available on godoc.org](http://godoc.org/github.com/PuerkitoBio/fetchbot).
+The [API documentation is available on godoc.org](http://godoc.org/github.com/jeremiahyan/fetchbot).
 
 ## Changes
 
@@ -38,7 +38,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/PuerkitoBio/fetchbot"
+	"github.com/jeremiahyan/fetchbot"
 )
 
 func main() {
@@ -155,7 +155,7 @@ reach 0.
 What fetchbot doesn't do - especially compared to gocrawl - is that it doesn't
 keep track of already visited URLs, and it doesn't normalize the URLs. This is outside
 the scope of this package - all commands sent on the Queue will be fetched.
-Normalization can easily be done (e.g. using [purell](https://github.com/PuerkitoBio/purell)) before sending the Command to the Fetcher.
+Normalization can easily be done (e.g. using [purell](https://github.com/jeremiahyan/purell)) before sending the Command to the Fetcher.
 How to keep track of visited URLs depends on the use-case of the specific crawler,
 but for an example, see /example/full/main.go.
 

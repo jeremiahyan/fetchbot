@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/PuerkitoBio/fetchbot"
+	"github.com/jeremiahyan/fetchbot"
 )
 
 func main() {
