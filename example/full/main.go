@@ -187,12 +187,12 @@ func stopHandler(stopurl string, cancel bool, wrapped fetchbot.Handler) fetchbot
 
 // logHandler prints the fetch information and dispatches the call to the wrapped Handler.
 func logHandler(wrapped fetchbot.Handler) fetchbot.Handler {
-	return fetchbot.HandlerFunc(func(ctx *fetchbot.Context, res *http.Response, doc goquery.Document, err error) {
+	return fetchbot.HandlerFunc(func(ctx *fetchbot.Context, res *http.Response, err error) {
 		if err == nil {
 			fmt.Printf("[%d] %s %s - %s\n", res.StatusCode, ctx.Cmd.Method(), ctx.Cmd.URL(), res.Header.Get("Content-Type"))
 			var p []byte
-			_, err := res.Body.Read(p)
-			fmt.Printf("\nBody: \n 1:%d|%s \n 2: %s \n", doc, err, string(p))
+			num, err := res.Body.Read(p)
+			fmt.Printf("\nBody: \n 1:%d|%s \n 2: %s \n", num, err, string(p))
 		}
 		wrapped.Handle(ctx, res, err)
 	})
