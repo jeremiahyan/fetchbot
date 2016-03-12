@@ -23,7 +23,7 @@ var (
 	dup = map[string]bool{}
 
 	// Command-line flags
-	seed        = flag.String("seed", "http://golang.org", "seed URL")
+	seed        = flag.String("seed", "http://chicklitclub.com", "seed URL")
 	cancelAfter = flag.Duration("cancelafter", 0, "automatically cancel the fetchbot after a given time")
 	cancelAtURL = flag.String("cancelat", "", "automatically cancel the fetchbot at a given URL")
 	stopAfter   = flag.Duration("stopafter", 0, "automatically stop the fetchbot after a given time")
@@ -187,9 +187,12 @@ func stopHandler(stopurl string, cancel bool, wrapped fetchbot.Handler) fetchbot
 
 // logHandler prints the fetch information and dispatches the call to the wrapped Handler.
 func logHandler(wrapped fetchbot.Handler) fetchbot.Handler {
-	return fetchbot.HandlerFunc(func(ctx *fetchbot.Context, res *http.Response, err error) {
+	return fetchbot.HandlerFunc(func(ctx *fetchbot.Context, res *http.Response, doc goquery.Document, err error) {
 		if err == nil {
 			fmt.Printf("[%d] %s %s - %s\n", res.StatusCode, ctx.Cmd.Method(), ctx.Cmd.URL(), res.Header.Get("Content-Type"))
+			var p []byte
+			_, err := res.Body.Read(p)
+			fmt.Printf("\nBody: \n 1:%d|%s \n 2: %s \n", doc, err, string(p))
 		}
 		wrapped.Handle(ctx, res, err)
 	})
